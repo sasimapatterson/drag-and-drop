@@ -74,17 +74,35 @@ function updateDOM() {
   // Backlog Column
   backlogList.textContent = '';
   backlogListArray.forEach((backlogItem, index) => {
-
+    createItemEl(backlogList, 0, backlogItem, index);
   });
 
   // Progress Column
+  progressList.textContent = '';
+  progressListArray.forEach((progressItem, index) => {
+    createItemEl(progressList, 1, progressItem, index);
+  });
 
   // Complete Column
+  completeList.textContent = '';
+  completeListArray.forEach((completeItem, index) => {
+    createItemEl(completeList, 2, completeItem, index);
+  });
 
   // On Hold Column
+  onHoldList.textContent = '';
+  onHoldListArray.forEach((onHoldItem, index) => {
+    createItemEl(onHoldList, 3, onHoldItem, index);
+  });
 
   // Run getSavedColumns only once, Update Local Storage
-
+  backlogList.textContent = '';
+  backlogListArray.forEach((backlogItem, index) => {
+    createItemEl(backlogList, 0, backlogItem, index);
+  });
 
 }
+
+// On Load
+updateDOM();
 
