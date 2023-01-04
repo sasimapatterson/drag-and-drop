@@ -3,7 +3,7 @@ const saveItemBtns = document.querySelectorAll('.solid');
 const addItemContainers = document.querySelectorAll('.add-container');
 const addItems = document.querySelectorAll('.add-item');
 // Item Lists
-const itemLists = document.querySelectorAll('.drag-item-list');
+const listColumns = document.querySelectorAll('.drag-item-list');
 const backlogList = document.getElementById('backlog-list');
 const progressList = document.getElementById('progress-list');
 const completeList = document.getElementById('complete-list');
@@ -88,26 +88,22 @@ function updateDOM() {
   // Progress Column
   progressList.textContent = '';
   progressListArray.forEach((progressItem, index) => {
-    createItemEl(progressList, 1, progressItem, index);
+    createItemEl(progressList, 0, progressItem, index);
   });
 
   // Complete Column
   completeList.textContent = '';
   completeListArray.forEach((completeItem, index) => {
-    createItemEl(completeList, 2, completeItem, index);
+    createItemEl(completeList, 0, completeItem, index);
   });
 
   // On Hold Column
   onHoldList.textContent = '';
   onHoldListArray.forEach((onHoldItem, index) => {
-    createItemEl(onHoldList, 3, onHoldItem, index);
+    createItemEl(onHoldList, 0, onHoldItem, index);
   });
 
   // Run getSavedColumns only once, Update Local Storage
-  backlogList.textContent = '';
-  backlogListArray.forEach((backlogItem, index) => {
-    createItemEl(backlogList, 0, backlogItem, index);
-  });
 
 }
 
@@ -118,6 +114,19 @@ function drag(e) {
 }
 
 // Column Allows for Item to Drop
+function allowDrop(e) {
+  e.preventDefault();
+}
+
+// When Item Enters Column Area
+function dragEnter(column) {
+  console.log(listColumns[column]);
+}
+
+// Dropping Item in Column
+function drop(e) {
+  e.preventDefault();
+}
 
 // On Load
 updateDOM();
