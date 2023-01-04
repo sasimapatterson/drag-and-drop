@@ -21,6 +21,7 @@ let listArrays = [];
 
 // Drag Functionality
 let draggedItem;
+let currentColumn;
 
 
 // Get Arrays from localStorage if available, set default values if not
@@ -120,12 +121,20 @@ function allowDrop(e) {
 
 // When Item Enters Column Area
 function dragEnter(column) {
-  console.log(listColumns[column]);
+  listColumns[column].classList.add('over');
+  currentColumn = column;
 }
 
 // Dropping Item in Column
 function drop(e) {
   e.preventDefault();
+  // Remove Background Colour/Padding
+  listColumns.forEach((column) => {
+    column.classList.remove('over');
+  });
+  // Add Item to Column
+  const parent = listColumns[currentColumn];
+  parent.appendChild(draggedItem);
 }
 
 // On Load
