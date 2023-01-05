@@ -115,6 +115,7 @@ function addToColumn(column) {
   const itemText = addItems[column].textContent;
   const selectedArray = listArrays[column];
   selectedArray.push(itemText);
+  addItems[column].textContent = '';
   updateDOM();
 }
 
