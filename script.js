@@ -114,6 +114,7 @@ function updateDOM() {
 function updateItem(id, column) {
   const selectedArray = listArrays[column];
   const selectedColumnEl = listColumns[column].children;
+  // To delete
   if (!selectedColumnEl[id].textContent) {
     delete selectedArray[id];
   }
