@@ -114,9 +114,13 @@ function updateDOM() {
 // Update Item - Delete if necessary, or update Array value
 function updateItem(id, column) {
   const selectedArray = listArrays[column];
-  console.log(selectedArray);
   const selectedColumnEl = listColumns[column].children;
-  console.log(selectedColumnEl[id].textContent);
+  // to delete
+  if (!selectedColumnEl[id].textContent) {
+    delete selectedArray[id];
+  }
+  console.log(selectedArray);
+  updateDOM();
 }
 
 // Add to Column List, Reset Textbox
